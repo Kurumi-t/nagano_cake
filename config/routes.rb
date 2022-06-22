@@ -1,17 +1,8 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get "homes/top" => "homes#top", as: "/"
-    resources :orders, only: [:show, :update]
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:show, :update]
-  end
+  get '/' => 'public/homes#top', as: '/top'
+  get '/about' => 'public/homes#about', as: '/about' 
   
-  namespace :public do
-    get 'homes/top' => "homes#top", as: "/" 
-    get 'homes/about' => "homes#about", as: "/about" 
+  scope module: :public do
     resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
     resources :cart_items, only: [:update, :destroy, :destroy_all, :edit]
     resources :customers, only: [:show, :edit, :update, :withdraw, :withdraw_update]
@@ -19,15 +10,23 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update, :withdraw, :withdraw_update]
   end
   
-# URL /customers/sign_in ...
-devise_for :customers, skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: "public/sessions"
-}
-
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-}
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
+  
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  get '/admin' => 'admin/homes#top', as: '/admin'
+  
+  namespace :admin do
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resources :orders_details, only: [:update]
+  end
   
 end

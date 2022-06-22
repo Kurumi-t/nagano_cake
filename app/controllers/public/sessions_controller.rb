@@ -26,6 +26,7 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
     if @customer.valid_password?(params[:customer][:password])
       redirect_to new_customer_session_path
+      
     else
       
     end

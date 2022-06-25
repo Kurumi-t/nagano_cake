@@ -4,12 +4,11 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @genres = Genre.all
   end
 
   def create
-    genre_id = Genre.find_by(code: params[:item][:genre_id]).id
-    Item.create(item_params.merge(genre_id: genre_id))
+    #genre_id = Genre.find_by(code: params[:item][:genre_id]).id
+    #Item.create(item_params.merge(genre_id: genre_id))
   end
 
   def show
@@ -22,7 +21,7 @@ class Admin::ItemsController < ApplicationController
   end
   
   private
-  def item_params
-    params.require(:item).permit(:item_genre)
-  end
+  #def item_params
+   # params.require(:item).permit(:item_genre)
+  #end
 end

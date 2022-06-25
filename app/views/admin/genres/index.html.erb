@@ -1,7 +1,7 @@
 <div class="container">
   <h4>ジャンル一覧・追加</h4>
     <%= form_with model: [:admin, @genre] do |f| %>
-      <h6>ジャンル名</h6>
+      <label for="genre_name">ジャンル名</label>
       <%= f.text_field :name %>
       <%= f.submit '新規登録', class:"btn btn-success" %>
 	  <% end %>
@@ -17,7 +17,7 @@
           <tr>
             <td><%= genre.name %></td>
             <td>
-              <%=link_to edit_admin_genre_path(genre.id) do %>編集する<% end %>
+              <%= link_to("編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success") %>
             </td>
           </tr>
           <% end %>

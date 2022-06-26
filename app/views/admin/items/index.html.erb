@@ -17,7 +17,13 @@
           <td><%= link_to admin_item_path(item.id) do %><%= item.name %><% end %></td>
           <td><%= item.price %></td>
           <td><%= item.genre.name %></td>
-          <td><%= item.is_active %></td>
+          <td>
+            <% if item.is_active == true %>
+              <p>販売中</p>
+            <% elsif item.is_active == false %>
+              <p>販売停止中</p>
+            <% end %>
+          </td>
         </tr>
         
         <% end %>

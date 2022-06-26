@@ -8,8 +8,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    #genre_id = Genre.find_by(name: params[:item][:genre_id])
-    #Item.create(item_params.merge(genre_id: genre_id))
     @item = Item.new(item_params)
     @item.save
     redirect_to admin_item_path(@item.id)
@@ -25,7 +23,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
-    item = Items.find(params[:id])
+    item = Item.find(params[:id])
     item.update(item_params)
     redirect_to admin_item_path(item.id)
   end

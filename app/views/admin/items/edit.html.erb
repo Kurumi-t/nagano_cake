@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>商品編集</h2>
+  <h4>商品編集</h4>
   <%= form_with model: [:admin, @item] do |f| %>
     <div class="form group">
       <label for="item_image">商品画像</label>
@@ -23,11 +23,11 @@
     </div>
     <div class="form group">
       <label for="item_is_active">販売ステータス</label>
-      <%= f.radio_button :is_active, value: true %>
-      <%= f.label :is_active, "販売中" %>
+        <%= f.radio_button :is_active, value: true, checked: "checked" %>
+        <%= f.label :is_active, "販売中" %>
       
-      <%= f.radio_button :is_active, value: false %>
-      <%= f.label :is_active, "販売停止中" %>
+        <%= f.radio_button :is_active, value: false %>
+        <%= f.label :is_active, "販売停止中" %>
     </div>
     <div class="form group">
       <%= f.submit '変更を保存', class:"btn btn-success" %>

@@ -1,14 +1,14 @@
 class Admin::ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page])
-  end
+  endS
 
   def new
     @item = Item.new
   end
 
   def create
-    #genre_id = Genre.find_by(code: params[:item][:genre_id]).id
+    #genre_id = Genre.find_by(name: params[:item][:genre_id])
     #Item.create(item_params.merge(genre_id: genre_id))
     @item = Item.new(item_params)
     @item.save
@@ -17,12 +17,17 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @genre = Genre.find_by(id: @item.genre_id)
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    item = Items.find(params[:id])
+    item.update(item_params)
+    redirect_to admin_item_path(item.id)
   end
   
   private

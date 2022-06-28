@@ -10,7 +10,7 @@
         <tbody>
           <tr>
             <th>購入者</th>
-            <td><%= @order.customer_last_name %><%= order.customer_first_name %></td>
+            <td><%= @customer.last_name %><%= @customer.first_name %></td>
           </tr>
           <tr>
             <th>注文日</th>
@@ -28,7 +28,7 @@
           <%= form_with model: [:admin, @order] do |f| %>
           <tr>
             <th>注文ステータス</th>
-            <td><%= order.status %>
+            <td>
               <%= f.select :status, Order.all.map {|order| [order.status, order.id]}, {include_blank: "--選択してください--"} %>
             </td>
             <td><%= f.submit '更新', class:"btn btn-success" %></td>
@@ -49,10 +49,14 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td><%= order.cart_created_at %></td>
-            <td><%= order.customer_last_name %><%= order.customer_first_name %></td>
-            <td><%= order.order_details.amount %></td>
-            <td><%= order.status %></td>
+            <td><%= @item.name %></td>
+            <td><%= @item.price %>*1.1</td>
+            <td><%= @cart_item.amount %></td>
+            <td><%= @item.price %> *1.1 * <% @cart_item.amount %></td>
+            <td>
+              <%= f.select :making_status, Order_detail.all.map {|order_detail| [order_detail.making_status, order_detail.id]}, {include_blank: "--選択してください--"} %>
+            </td>
+            <td><%= f.submit '更新', class:"btn btn-success" %></td>
           </tr>
           <% end %>
         </tbody>

@@ -1,2 +1,64 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <h5>注文履歴詳細</h5>
+  <div class="row">
+    <div class="col-lg-10 offset-md-1">
+      <table>
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.customer_last_name %><%= order.customer_first_name %></td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at %></td>
+          </tr>
+          <tr>
+            <th colspan="2">配送先</th>
+            <td><%= @order.postal_code %><%= @order.address %></td>
+            <td><%= @order.name %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <%= form_with model: [:admin, @order] do |f| %>
+          <tr>
+            <th>注文ステータス</th>
+            <td><%= order.status %>
+              <%= f.select :status, Order.all.map {|order| [order.status, order.id]}, {include_blank: "--選択してください--"} %>
+            </td>
+            <td><%= f.submit '更新', class:"btn btn-success" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th colspan="2">製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.cart_created_at %></td>
+            <td><%= order.customer_last_name %><%= order.customer_first_name %></td>
+            <td><%= order.order_details.amount %></td>
+            <td><%= order.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <%= paginate @orders %>
+  </div>
+</div>

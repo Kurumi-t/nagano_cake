@@ -1,34 +1,42 @@
 <div class="container">
-  <h4>商品詳細</h4>
-    <%= image_tag @item.get_image(180,100) %>
-    <table>
-      <tbody>
-        <tr>
-          <td><span>商品名</span></td>
-          <td><%= @item.name %></td>
-        </tr>
-        <tr>
-          <td><span>商品説明</span></td>
-          <td><%= @item.introduction %></td>
-        <tr>
-          <td><span>ジャンル</span></td>
-          <td><%= @genre.name %></td>
-        </tr>
-        <tr>
-          <td><span>税抜価格<br>(税抜価格)</span></td>
-          <td><%= @item.price %>円</td>
-        </tr>
-        <tr>
-          <td><span>販売ステータス</span></td>
-          <td>
-            <% if @item.is_active == true %>
-              <p>販売中</p>
-            <% else %>
-              <p>販売停止中</p>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <%= link_to("編集する", edit_admin_item_path(@item.id), class: "btn btn-success") %>
+  <h5>商品詳細</h5>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-3 px-5 px-sm-0"> 
+      <%= image_tag @item.get_image(180,100) %>
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-9 px-5 px-sm-0"> 
+      <table>
+        <tbody>
+          <tr>
+            <td><span>商品名</span></td>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td><span>商品説明</span></td>
+            <td><%= @item.introduction %></td>
+          <tr>
+            <td><span>ジャンル</span></td>
+            <td><%= @genre.name %></td>
+          </tr>
+          <tr>
+            <td><span>税抜価格<br>(税抜価格)</span></td>
+            <td><%= @item.price %>円</td>
+            </tr>
+          <tr>
+            <td><span>販売ステータス</span></td>
+            <td>
+              <% if @item.is_active == true %>
+                <p>販売中</p>
+              <% else %>
+                <p>販売停止中</p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="action mx-auto">
+      <%= link_to("編集する", edit_admin_item_path(@item.id), class: "btn btn-success btn-lg") %>
+    </div>
+  </div>
 </div>

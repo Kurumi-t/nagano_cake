@@ -1,7 +1,7 @@
 <div class="container">
   <h5>注文履歴詳細</h5>
   <div class="row">
-    <div class="col-lg-10 offset-md-1">
+    <div class="col-lg-12 offset-md-1">
       <table>
         <thead>
           <tr>
@@ -36,32 +36,50 @@
           <% end %>
         </tbody>
       </table>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th colspan="2">製作ステータス</th>
-          </tr>
-        </thead>
+    </div>
+    <table class="table col-lg-8">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th colspan="2">製作ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.item.name %></td>
+          <td><%= order.cart_item.post_tax_price %></td>
+          <td><%= order.cart_item.amount %></td>
+          <td><%= order.cart_item.total_price %></td>
+          <td>
+            <%= f.select :making_status, Order_detail.all.map {|order_detail| [order_detail.making_status, order_detail.id]}, {include_blank: "--選択してください--"} %>
+          </td>
+          <td><%= f.submit '更新', class:"btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="col-lg-4">
+      <table>
+        <% @orders.each do |order| %>
         <tbody>
-          <% @orders.each do |order| %>
           <tr>
-            <td><%= @item.name %></td>
-            <td><%= @item.price %>*1.1</td>
-            <td><%= @cart_item.amount %></td>
-            <td><%= @item.price %> *1.1 * <% @cart_item.amount %></td>
-            <td>
-              <%= f.select :making_status, Order_detail.all.map {|order_detail| [order_detail.making_status, order_detail.id]}, {include_blank: "--選択してください--"} %>
-            </td>
-            <td><%= f.submit '更新', class:"btn btn-success" %></td>
+            <th>商品合計</th>
+            <td><%= (order.total_price).to_i %>円</td>
           </tr>
-          <% end %>
+          <tr>
+            <th>送料</th>
+            <td><%= (order.shopping_cost).to_i %>円</td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <td><%= (order.claim_price).to_i %>円</td>
+          </tr>
         </tbody>
       </table>
-    </div>
     </div>
     <%= paginate @orders %>
   </div>

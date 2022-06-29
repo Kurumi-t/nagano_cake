@@ -1,7 +1,6 @@
 class Order < ApplicationRecord
 	has_many :cart_items, dependent: :destroy
 	
-	shopping_cost: 800
 	enum payment_method: { credit_card: 0, transfer: 1 }
 	enum status:  { waiting_payment: 0, payment_confirmation: 1, delivery_preparation: 2, delivered: 3 }
 

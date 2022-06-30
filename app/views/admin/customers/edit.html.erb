@@ -1,5 +1,5 @@
 <div class="container">
-  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+  <h5><span class="bg-light">　<%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</span></h5>
   <div class="col-md-8 offset-md-1">
     <%= form_with model: [:admin, @customer] do |f| %>
       <table class="table">

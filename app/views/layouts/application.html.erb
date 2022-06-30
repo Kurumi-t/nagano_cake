@@ -12,45 +12,56 @@
 
   <body>
     <header>
-      <div class="container">
-        <nav class = "navbar-expand" >
-          <div class="navbar-collapse" >
-            <ul class="navbar-nav ml-auto">
-            <% if customer_signed_in? %> 
-              <li>
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary" %>
-              </li>
-            <% elsif admin_signed_in? %>
-              <li>
-                <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary" %>
-              </li>
-              <li>
-                <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary" %>
-              </li>  
-              <li>
-                <%= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-secondary" %>
-              </li>
-              <li>
-                <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary" %>
-              </li>
-              <li>
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to "About", about_path, class: "btn btn-outline-secondary" %>
-              </li>
-              <li>
-                <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %>
-              </li>
-              <li>
-                <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %>
-              </li>
-              <li>
-                <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %>
-              </li>
-            <% end %>
-            </ul>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+              <span>LOGO</span>
+            </a>
+            <div class="nav flex-column">
+              <ul class="nav-list navbar-nav justify-content-end ">
+              <% if customer_signed_in? %> 
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/customers/sign_out">ログアウト</a>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/items">商品一覧</a>
+                </li>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/customers">会員一覧</a>
+                </li>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin">注文履歴一覧</a>
+                </li>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/genres">About</a>
+                </li>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/sign_out">ログアウト</a>
+                </li>
+              <% else %>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/about">About</a>
+                </li>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/items">商品一覧</a>
+                </li>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/customers/sign_up">新規登録</a>
+                </li>
+                <li class="nav-list-item">
+                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/customers/sign_in">ログイン</a>
+                </li>
+              <% end %>
+              </ul>
+              <div class="justify-content-end">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
+              </div>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

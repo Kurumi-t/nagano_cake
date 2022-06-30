@@ -1,5 +1,5 @@
 <div class="container">
-  <h5>商品一覧</h5>
+  <h5><span class="bg-light">　商品一覧　</span></h5>
   <div class="row">
     <table class="table">
       <thead>
@@ -16,7 +16,7 @@
           <tr>
             <td><%= item.id %></td>
             <td>
-              <%= link_to admin_item_path(item.id) do%>
+              <%= link_to(admin_item_path(item.id), class: "text-dark") do %>
                 <%= item.name %>
               <% end %>
             </td>
@@ -24,7 +24,7 @@
             <td><%= item.genre.name %></td>
             <td>
               <% if item.is_active == true %>
-                <p>販売中</p>
+                <p　class="text-success">販売中</p>
               <% elsif item.is_active == false %>
                 <p>販売停止中</p>
               <% end %>

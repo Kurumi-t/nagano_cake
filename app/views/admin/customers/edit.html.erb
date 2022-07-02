@@ -1,68 +1,74 @@
 <div class="container">
-  <h5><span class="bg-light">　<%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</span></h5>
-  <div class="col-md-8 offset-md-1">
-    <%= form_with model: [:admin, @customer] do |f| %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td><span>会員ID</span></td>
+  <span class="bg-light mx-5 h5">　<%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</span>
+  <div class="row mt-5">
+    <div class="col-sm-12 col-md-8 offset-md-1">
+      <%= form_with model: [:admin, @customer] do |f| %>
+        <table class="table table-borderless table-sm">
+          <tbody>
+            <tr>
+              <td>会員ID<td>
             <td><%= @customer.id %></td>
-          </tr>
-          <div class="field">
-            <tr>
-              <td><span>氏名</span></td>
-              <td><%= f.text_field :last_name %></td>
-              <td><%= f.text_field :first_name %></td>
-            <tr>
-          </div>
-          <div class="field">
-            <tr>
-              <td><span>フリガナ</span></td>
-              <td><%= f.text_field :last_name_kana %></td>
-              <td><%= f.text_field :first_name_kana %></td>
             </tr>
-          </div>
-          <div class="field">
-            <tr>
-              <td><span>郵便番号</span></td>
-              <td><%= f.text_field :postal_code %></td>
-            </tr>
-          </div>
-          <div class="field">
-            <tr>
-              <td><span>住所</span></td>
-              <td><%= f.text_area :address %></td>
-            </tr>
-          </div>
-          <div class="field">
-            <tr>
-              <td><span>電話番号</span></td>
-              <td><%= f.text_field :telephone_number %></td>
-            </tr>
-          </div>
-          <div class="field">
-            <tr>
-              <td><label>メールアドレス</label></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-            </tr>
-          </div>
-          <div class="field">
-            <tr>
-              <td><span>会員ステータス</span></td>
-              <td>
-               <%= f.radio_button :is_deleted, value: false %>
-                <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-            
-                <%= f.radio_button :is_deleted, value: true %>
-                <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
-              </td>
-            </tr>
-          </div>
-        </tbody>
-      </table>
-      <div class="form group">
-        <%= f.submit '変更を保存', class:"btn btn-success" %>
-      </div>
-    <% end %>
+            <div class="field">
+              <tr>
+                <td>氏名</td>
+                <td><%= f.text_field :last_name, class: "form-control" %></td>
+                <td><%= f.text_field :first_name, class: "form-control" %></td>
+              <tr>
+            </div>
+            <div class="field">
+              <tr>
+                <td>フリガナ</td>
+                <td><%= f.text_field :last_name_kana, class: "form-control" %></td>
+                <td><%= f.text_field :first_name_kana, class: "form-control" %></td>
+              </tr>
+            </div>
+            <div class="field">
+              <tr>
+                <td>郵便番号</td>
+                <td><%= f.text_field :postal_code, class: "form-control" %></td>
+              </tr>
+            </div>
+            <div class="field">
+              <tr>
+                <td>住所</td>
+                <td colspan="3"><%= f.text_field :address, class: "form-control" %></td>
+              </tr>
+            </div>
+            <div class="field">
+              <tr>
+                <td>電話番号</td>
+                <td><%= f.text_field :telephone_number, class: "form-control" %></td>
+              </tr>
+            </div>
+            <div class="field">
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
+              </tr>
+            </div>
+            <div class="field">
+              <tr>
+                <td>会員ステータス</td>
+                <td>
+                  <div class="form-check text-black-50">
+                    <label>
+                      <input class="form-check-input" type="radio" name="is_deleted" value="false" checked style="accent-color:black;">有効　　
+                    </label>
+                    <label>
+                      <input class="form-check-input" type="radio" name="is_deleted" value="true" style="accent-color:black;">退会
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= f.submit '　変更を保存　', class:"btn btn-success btn-lg" %></td>
+              </tr>
+            </div>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
   </div>
 </div>

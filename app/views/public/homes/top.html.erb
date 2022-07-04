@@ -33,15 +33,17 @@
     </div>
     <div class="col-9">
       <h3>新着商品</h3>
-      <div >
+      <div class="row">
         <% @items.each do |item| %>
-          <%= image_tag item.get_image(180,100) %>
-          <p>
-            <%= link_to(admin_item_path(item.id), class: "text-dark") do %>
-              <%= item.name %>
-            <% end %>
-          </p>
-          <p>￥<%= item.price %></p>
+          <div class="col-3">
+            <%= image_tag item.get_image(180,100) %>
+            <p>
+              <%= link_to(admin_item_path(item.id), class: "text-dark") do %>
+                <%= item.name %>
+              <% end %>
+            </p>
+            <p>￥<%= item.price %></p>
+          </div>
         <% end %>
       </div>
       <p class="text-right">

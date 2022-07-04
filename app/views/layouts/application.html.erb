@@ -22,36 +22,56 @@
               <ul class="nav-list navbar-nav justify-content-end ">
               <% if customer_signed_in? %> 
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/customers/sign_out">ログアウト</a>
+                  <%= link_to new_customer_session_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    ログアウト
+                  <% end %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/items">商品一覧</a>
+                  <%= link_to admin_items_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    商品一覧
+                  <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/customers">会員一覧</a>
+                  <%= link_to admin_customers_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    会員一覧
+                  <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin">注文履歴一覧</a>
+                  <%= link_to admin_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    注文履歴一覧
+                  <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/genres">About</a>
+                  <%= link_to admin_genres_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    About
+                  <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/admin/sign_out">ログアウト</a>
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    ログアウト
+                  <% end %>
                 </li>
               <% else %>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/about">About</a>
+                  <%= link_to about_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    About
+                  <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/items">商品一覧</a>
+                  <%= link_to items_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    商品一覧
+                  <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/customers/sign_up">新規登録</a>
+                  <%= link_to new_customer_registration_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    新規登録
+                  <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <a class="btn btn-outline-light text-dark mt-3 mb-2 mx-4" href="/customers/sign_in">ログイン</a>
+                  <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    ログアウト
+                  <% end %>
                 </li>
               <% end %>
               </ul>

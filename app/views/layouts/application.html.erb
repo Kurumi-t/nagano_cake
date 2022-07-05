@@ -22,7 +22,7 @@
               <ul class="nav-list navbar-nav justify-content-end ">
               <% if customer_signed_in? %> 
                 <li class="nav-list-item">
-                  <%= link_to new_customer_session_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                  <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
                     ログアウト
                   <% end %>
                 </li>
@@ -69,8 +69,8 @@
                   <% end %>
                 </li>
                 <li class="nav-list-item">
-                  <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
-                    ログアウト
+                  <%= link_to new_customer_session_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    ログイン
                   <% end %>
                 </li>
               <% end %>

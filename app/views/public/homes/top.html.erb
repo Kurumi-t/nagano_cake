@@ -2,11 +2,11 @@
   <p class="mx-auto h1">top</p>
   <div class="row pt-3">
     <div class="col-3">
-      <table class="table table-sm border">
-        <thead>
+      <table class="table table-sm table-borderless">
+        <thead class="border border-dark">
           <th>ジャンル検索</th>
         </thead>
-        <tbody>
+        <tbody class="border border-dark">
           <% @genres.each do |genre| %>
             <tr>
               <td><%= genre.name %></td>

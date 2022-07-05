@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/customers/my_page' => 'public/customers#show', as: '/customers/my_page'
   
   scope module: :public do
+    resources :addresses, only: [:create, :destroy, :edit, :index, :update]
     resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :edit]
     resources :customers, only: [:edit, :update, :withdraw, :withdraw_update]

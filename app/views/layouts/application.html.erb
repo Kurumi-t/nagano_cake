@@ -20,7 +20,22 @@
             </a>
             <div class="nav flex-column">
               <ul class="nav-list navbar-nav justify-content-end ">
-              <% if customer_signed_in? %> 
+              <% if customer_signed_in? %>
+                <li class="nav-list-item">
+                  <%= link_to customers_my_page_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    マイページ
+                  <% end %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to items_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    商品一覧
+                  <% end %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to cart_items_path, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                    カート
+                  <% end %>
+                </li>
                 <li class="nav-list-item">
                   <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
                     ログアウト

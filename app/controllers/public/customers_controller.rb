@@ -1,7 +1,6 @@
 class Public::CustomersController < ApplicationController
   def show
-    @genres = Genre.all
-    @items = Item.page(params[:page])
+    @customer = current_customer
   end
 
   def edit

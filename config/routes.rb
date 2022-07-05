@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get '/' => 'public/homes#top', as: '/top'
-  get '/about' => 'public/homes#about', as: '/about' 
+  root to: "public/homes#top"
+  get '/about' => 'public/homes#about'
   
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -11,18 +11,22 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
   
-  get '/customers/my_page' => 'public/customers#show', as: '/customers/my_page'
+  post '/orders/confirm' => 'public/orders#confirm'
+  get '/orders/thanks' => 'public/orders#thanks'
+  delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
+  get '/customers/my_page' => 'public/customers#show'
+  get '/customers/withdraw' => 'public/customers#withdraw'
+  patch '/customers/withdraw_update' => 'public/customers#withdraw_update'
   
   scope module: :public do
     resources :addresses, only: [:create, :destroy, :edit, :index, :update]
-    resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :edit]
-    resources :customers, only: [:edit, :update, :withdraw, :withdraw_update]
+    resources :orders, only: [:new, :create, :index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :edit]
+    resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update, :withdraw, :withdraw_update]
   end
   
-  get '/admin' => 'admin/homes#top', as: '/admin'
+  get '/admin' => 'admin/homes#top'
   
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]

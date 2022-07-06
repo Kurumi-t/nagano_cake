@@ -14,6 +14,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
   end
 
   def withdraw_update

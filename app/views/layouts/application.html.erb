@@ -19,7 +19,7 @@
           </a>
           <div class="mx-auto pt-5">
             <% if customer_signed_in? %>
-              <p>ようこそ、<%= @customer.last_name %>さん！</p>
+              <p>ようこそ、<%= current_customer.last_name %>さん！</p>
             <% end %>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">

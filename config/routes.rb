@@ -17,11 +17,12 @@ Rails.application.routes.draw do
   get '/customers/my_page' => 'public/customers#show'
   get '/customers/withdraw' => 'public/customers#withdraw'
   patch '/customers/withdraw_update' => 'public/customers#withdraw_update'
+  post '/cart_items/:id/edit' => 'public/cart_items#edit', as: 'cart_items'
   
   scope module: :public do
     resources :addresses, only: [:create, :destroy, :edit, :index, :update]
     resources :orders, only: [:new, :create, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :edit]
+    resources :cart_items, only: [:index, :update, :destroy]
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
   end

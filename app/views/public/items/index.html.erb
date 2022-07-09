@@ -15,18 +15,17 @@
       </table>
     </div>
     <div class="col-9">
-      <p class="h5"><b class="h3">商品一覧</b>（全件）</p>
+      <p class="h5"><b class="h3">商品一覧</b>（全<%= @items.count %>件）</p>
       <div class="row pt-3">
         <div class="col-3">
           <% @items.each do |item| %>
             <%= image_tag item.get_image(180,100) %>
-              <p>
-                <%= link_to(admin_item_path(item.id), class: "text-dark") do %>
-                  <%= item.name %>
-                <% end %>
-              </p>
-              <p>￥<%= item.price %></p>
-            <% end %>
+            <p>
+              <%= link_to(admin_item_path(item.id), class: "text-dark") do %>
+                <%= item.name %>
+              <% end %>
+            </p>
+            <p>￥<%= item.price %></p>
           <% end %>
         </div>
         <%= paginate @items %>

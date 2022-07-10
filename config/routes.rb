@@ -10,26 +10,23 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
-  post '/orders/confirm' => 'public/orders#confirm'
-  get '/orders/thanks' => 'public/orders#thanks'
-  delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
-  get '/customers/my_page' => 'public/customers#show'
-  get '/customers/withdraw' => 'public/customers#withdraw'
-  patch '/customers/withdraw_update' => 'public/customers#withdraw_update'
-  post '/cart_items/:id/edit' => 'public/cart_items#edit', as: 'cart_items'
-  
+ 
   scope module: :public do
+    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/thanks' => 'orders#thanks'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/withdraw' => 'customers#withdraw'
+    patch '/customers/withdraw_update' => 'customers#withdraw_update'
     resources :addresses, only: [:create, :destroy, :edit, :index, :update]
     resources :orders, only: [:new, :create, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy]
+    resources :cart_items, only: [:index, :edit, :update, :destroy]
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
   end
-  
-  get '/admin' => 'admin/homes#top'
-  
+
   namespace :admin do
+    get '/admin' => '/homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

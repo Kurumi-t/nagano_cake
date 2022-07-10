@@ -20,15 +20,21 @@
     <div class="col-6">
       <h3><b><%= @item.name %></b></h3>
       <p class="h5"><%= @item.introduction %></p>
-      <p class=""><b class="h3">￥<%= item.price %></b>（税込）</p>
+      <p class=""><b class="h3">￥<%= @item.add_tax_price.to_s(:dalimited) %></b>（税込）</p>
     </div>
     <div class="col-6">
     </div>
-    <div class="col-3">
-      個数選択
-    </div>
-    <div class="col-3">
-      <%= link_to("カートに入れる", cart_items_path, method: :post, class: "btn btn-primary") %>
-    </div>
+    <%= form_with model: @cart_item do |f| %>
+      <div class="col-3">
+        <form>
+          <div class="form-group">
+            <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], {include_blank: "個数選択"},{ class: "form_control" } %>
+          </div>
+        </form>
+      </div>
+      <div class="col-3">
+        <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+      </div>
+    <% end %>
   </div>
 </div>

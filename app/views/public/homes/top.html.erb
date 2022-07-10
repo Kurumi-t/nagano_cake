@@ -38,11 +38,11 @@
           <div class="col-3">
             <%= image_tag item.get_image(180,100) %>
             <p>
-              <%= link_to(admin_item_path(item.id), class: "text-dark") do %>
+              <%= link_to(item_path(item.id), class: "text-dark") do %>
                 <%= item.name %>
               <% end %>
             </p>
-            <p>￥<%= item.price %></p>
+            <p>￥<%= item.price.to_s(:delimited) %></p>
           </div>
         <% end %>
       </div>

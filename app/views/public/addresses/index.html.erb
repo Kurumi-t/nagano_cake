@@ -43,7 +43,7 @@
             <td><%= address.name %></td>
             <td>
               <%= link_to("編集する", edit_address_path(address.id), class: "btn btn-success") %>
-              <%= link_to("削除する", addresses_path, method: :delete, class: "btn btn-danger mx-2") %>
+              <%= link_to("削除する", address_path(address.id), method: :delete, class: "btn btn-danger mx-2") %>
             </td>
           </tr>
           <% end %>

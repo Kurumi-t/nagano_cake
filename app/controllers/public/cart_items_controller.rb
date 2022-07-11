@@ -1,8 +1,18 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
+    
+    @total_price = 0
   end
 
+  def create
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer
+    @cart_item.save
+    binding.pry
+    redirect_to cart_items_path
+  end
+    
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(@cart_item_params)
@@ -16,10 +26,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destoy_all
-  end
-
-  def edit
-    
+    current_customer.cart_items.destoy_all
   end
   
   private

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -27,15 +27,15 @@ class Public::SessionsController < Devise::SessionsController
     def after_sign_out_path_for(resource)
       root_path
     end
-  
+
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
     if @customer.valid_password?(params[:customer][:password])
       redirect_to new_customer_session_path
-      
+
     else
-      
+
     end
   end
   # If you have extra params to permit, append them to the sanitizer.

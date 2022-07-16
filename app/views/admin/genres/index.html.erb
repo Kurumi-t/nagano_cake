@@ -1,16 +1,14 @@
 <div class="container">
-  <span class="bg-light mx-5 h5">　ジャンル一覧・追加　</span>
+  <span class="bg-light mx-5 h5">ジャンル一覧・追加</span>
    <div class="row mt-5">
-    <div class="col-sm-6 col-md-6 col-lg-4">
-      <%= form_with model: [:admin, @genre] do |f| %>
-      <label for="genre_name"><b>ジャンル名</b></label>
-      <%= f.text_field :name, placeholder: 'ジャンル名', class: "float-right" %>
+    <div class="col-12">
+      <%= form_with model:@genre, url:admin_genres_path, method: :POST, local: true do |f| %>
+        <%= f.label :ジャンル名 %>
+        <%= f.text_field :name, placeholder: 'ジャンル名', class: " mx-5" %>
+        <%= f.submit '新規登録', class:"btn btn-success font-weight-bold px-4" %>
+      <% end %>
     </div>
-    <div class="col-sm-6 col-md-6 col-lg-8 px-5">
-      <%= f.submit '　新規登録　', class:"btn btn-success font-weight-bold" %>
-    <% end %>
-    </div>
-    <div class="col-sm-12 col-md-8 col-lg-4 px-sm-0 mt-5">
+    <div class="col-4 px-sm-0 mt-5">
       <table class="table border-bottom">
         <thead class="bg-light">
           <tr>
@@ -24,7 +22,7 @@
           <tr>
             <td colspan="2"><%= genre.name %></td>
             <td class="text-right">
-              <%= link_to("　編集する　", edit_admin_genre_path(genre.id), class: "btn btn-success mx-3") %>
+              <%= link_to("編集する", edit_admin_genre_path(genre.id), class: "btn btn-success mx-3") %>
             </td>
           </tr>
           <% end %>

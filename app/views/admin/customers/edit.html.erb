@@ -4,7 +4,7 @@
       <h5><span class="bg-light">　<%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</span></h5>
     </div>
     <div class="col-md-8 offset-md-1 mt-3">
-      <%= form_with model: [:admin, @customer] do |f| %>
+      <%= form_with model:@customer, url:admin_customer_path, method: :PATCH, local: true do |f| %>
         <table class="table table-borderless table-sm">
           <tbody>
             <tr>
@@ -42,7 +42,7 @@
               <td>
                 <div class="form-check text-black-50">
                   <label>
-                    <input class="form-check-input" type="radio" name="is_deleted" value="false" checked style="accent-color:black;">有効　　
+                    <input class="form-check-input" type="radio" name="is_deleted" value="false" checked style="accent-color:black;">有効
                   </label>
                    <label>
                     <input class="form-check-input" type="radio" name="is_deleted" value="true" style="accent-color:black;">退会

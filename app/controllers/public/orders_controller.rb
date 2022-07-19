@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @customer = current_customer
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     if params[:order][:select_address] == "1"
       @order.postal_code = @customer.postal_code
       @order.address = @customer.address
@@ -33,16 +34,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @customer = current_customer
-    cart_items = @customer.cart_items.all
-    @order = @customer.order.new(order_params)
+    cart_items = current_customer.cart_items.all
+    @order = Order.new(order_params)
     if @order.save
-      cart_items.each do |order|
-        order_item = OrderItem.new
-        order_item.id = @order.id
-        order_item.item_id = cart_item.item_id
-        order_item.order_amount = cart.amount
-        order_item.save
+      cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.order_id = @order.id
+        order_detail.item_id = cart_item.item_id
+        order_detail.amount = cart_item.amount
+        order_detail.price = cart_item.item.with_tax_price
+        order_detail.making_status = 1
+        order_detail.save
       end
       redirect_to orders_thanks_path
       cart_items.destroy_all
@@ -50,9 +52,6 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       render :new
     end
-    @order = Order.new(order_params)
-    @order.save
-    redirect_to orders_confirm_path
   end
 
   def index

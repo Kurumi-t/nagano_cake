@@ -19,7 +19,6 @@
             <th><%= cart_item.amount %>
             </th>
             <th><%= cart_item.subtotal.to_s(:delimited) %></th>
-
             <% @total_price += cart_item.subtotal %>
           </tr>
         </tbody>
@@ -51,10 +50,13 @@
   </div>
   <div class="text-center">
     <%= form_with model: @order, url: orders_path, method: :POST, local: true do |f| %>
+      <%= f.hidden_field :customer_id %>
       <%= f.hidden_field :postal_code %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :total_payment, value: @total_payment %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :status,  value: Order.statuses.key(0) %>
       <%= f.submit "注文を確定する", class: "btn btn-lg btn-success px-4" %>
     <% end %>
   </div>

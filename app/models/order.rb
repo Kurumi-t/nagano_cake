@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-
 	enum payment_method: { credit_card: 0, transfer: 1 }
 	enum status:  { waiting_payment: 0, payment_confirmation: 1, delivery_preparation: 2, delivered: 3 }
 
@@ -10,6 +9,4 @@ class Order < ApplicationRecord
   def address_display
   	'〒' + postal_code + ' ' + address + ' ' + name
   end
-
 end
-

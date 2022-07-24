@@ -34,8 +34,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
+    cart_items = current_customer.cart_items.all
     if @order.save
       cart_items.each do |cart_item|
         order_detail = OrderDetail.new
@@ -46,10 +46,11 @@ class Public::OrdersController < ApplicationController
         order_detail.making_status = 1
         order_detail.save
       end
-      redirect_to orders_thanks_path
       cart_items.destroy_all
+      redirect_to orders_thanks_path
     else
       @order = Order.new(order_params)
+      @customer = current_customer
       render :new
     end
   end

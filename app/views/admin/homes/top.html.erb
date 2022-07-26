@@ -1,7 +1,9 @@
 <div class="container">
-  <h5><span class="bg-light">　注文履歴一覧　</span></h5>
-  <div class="row">
-    <div class="col-lg-10 offset-md-1">
+  <div class="offset-md-1 mt-5">
+    <span class="bg-light px-4 h5">注文履歴一覧</span>
+  </div>
+  <div class="row mt-4">
+    <div class="col-9 offset-md-1">
       <table class="table border-bottom">
         <thead class="bg-light">
           <tr>
@@ -13,12 +15,18 @@
         </thead>
         <tbody>
           <% @orders.each do |order| %>
-          <tr>
-            <td><u><%= order.created_at %></u></td>
-            <td><%= order.customer_last_name %><%= order.customer_first_name %></td>
-            <td><%= order.order_details.amount %></td>
-            <td><%= order.status %></td>
-          </tr>
+          <% @total_amount = 0 %>
+            <tr>
+              <td><u><%= order.created_at.strftime('%Y/%m/%d %T') %></u></td>
+              <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+              <td>
+                <% order.order_details.each do |order_detail| %>
+                  <% @total_amount += order_detail.amount %>
+                <% end %>
+                <%= @total_amount %>
+              </td>
+              <td><%= order.status_i18n %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>

@@ -45,7 +45,7 @@
     </div>
     <div class="col-12">
       <p class="h5"><b class="mr-3">支払方法</b><%= @order.payment_method_i18n %></p>
-      <p class="h5 mt-5"><b class="mr-3">お届け先</b><%= @order.address_display %></p>
+      <p class="h5 mt-5"><b class="mr-3">お届け先</b><%= @order.address_display %><br><%= @order.name %></p>
     </div>
     <div class="col-12 text-center mt-4">
       <%= form_with model: @order, url: orders_path, method: :POST, local: true do |f| %>

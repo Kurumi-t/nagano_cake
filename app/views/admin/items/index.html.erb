@@ -1,14 +1,16 @@
 <div class="container">
-  <div>
-    <h5><span class="bg-light">　商品一覧　</span></h5>
-  </div>
-  <div class="text-right">
-    <%= link_to new_admin_item_path do %>
-      新規登録
-    <% end %>
+  <div class="row mt-5">
+    <div class="col-5 offset-md-1">
+      <span class="bg-light px-4 h5">商品一覧</span>
+    </div>
+    <div class="col-5 text-right">
+      <%= link_to(new_admin_item_path, class: "") do %>
+        +
+      <% end %>
+    </div>
   </div>
   <div class="row">
-    <div class="col-11 mx-auto">
+    <div class="col-10 mx-auto">
       <table class="table border-bottom">
         <thead class="bg-light">
     　     <tr>

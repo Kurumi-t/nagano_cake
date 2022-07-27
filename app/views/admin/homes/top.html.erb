@@ -7,7 +7,7 @@
       <table class="table border-bottom">
         <thead class="bg-light">
           <tr>
-            <th>購入日時</th>
+            <th class="col-3">購入日時</th>
             <th>購入者</th>
             <th>注文個数</th>
             <th>注文ステータス</th>
@@ -17,7 +17,13 @@
           <% @orders.each do |order| %>
           <% @total_amount = 0 %>
             <tr>
-              <td><u><%= order.created_at.strftime('%Y/%m/%d %T') %></u></td>
+              <td>
+                <u>
+                  <%= link_to(admin_order_path(order.id), class: "text-dark") do %>
+                    <%= order.created_at.strftime('%Y/%m/%d %T') %>
+                  <% end %>
+                </u>
+              </td>
               <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
               <td>
                 <% order.order_details.each do |order_detail| %>

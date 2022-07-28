@@ -1,8 +1,8 @@
 <div class="container">
+  <div class="offset-md-1 mt-5">
+    <span class="bg-light px-4 h5">会員情報編集</span>
+  </div>
   <div class="row pt-3">
-    <div class="col-md-8 offset-md-1">
-      <h5><span class="bg-light">　会員情報編集　</span></h5>
-    </div>
     <div class="col-9 mt-3">
       <%= form_with model: @customer do |f| %>
         <table class="table table-borderless table-sm">
@@ -12,6 +12,7 @@
               <td class="col-3"><%= f.text_field :last_name, class: "form-control border-dark" %></td>
               <td class="col-1"></td>
               <td class="col-3"><%= f.text_field :first_name, class: "form-control border-dark" %></td>
+              <td class="col-2"></td>
             <tr>
             <tr>
               <td class="col-3">フリガナ</td>
@@ -33,16 +34,18 @@
             </tr>
             <tr>
               <td class="col-3">メールアドレス</td>
-              <td class="col-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
-            </tr>
-            <tr>
-              <td class="col-3"></td>
-              <td colspan="2" class="col-3"><%= f.submit '　　　編集内容を保存　　　', class:"btn btn-success" %></td>
-              <td></td>
-              <td class="col-3"><%= link_to("　退会する　", customers_withdraw_path, class: "btn btn-danger") %></td>
+              <td class="col-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-dark" %></td>
             </tr>
           </tbody>
         </table>
+        <div class="form-group row mt-3">
+          <div class="offset-md-3 col-4">
+            <%= f.submit '編集内容を保存', class:"col-12 btn btn-success font-weight-bold" %>
+          </div>
+          <div class="offset-md-2 col-2">
+            <%= link_to("退会する", customers_withdraw_path, class: "col-12 btn btn-danger font-weight-bold") %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

@@ -1,23 +1,25 @@
 <div class="container">
-  <h5><span class="bg-light mt-3">　配送先登録/一覧　</span></h5>
+  <div class="offset-md-1 mt-5">
+    <span class="bg-light px-4 h5">配送先登録/一覧</span>
+  </div>
   <div class="row mt-3">
-    <div class="col-10 mt-3">
+    <div class="col-11 mx-3 mt-3">
     <%= form_with model: @address do |f| %>
-      <table class="table-borderless">
+      <table class="table table-sm table-borderless">
         <tbody>
           <tr>
             <td class="col-3">郵便番号（ハイフンなし）</td>
-            <td class="col-3"><%= f.text_field :postal_code, class: "form-control border-dark" %></td>
+            <td class="col-3"><%= f.text_field :postal_code, placeholder: '0000000', class: "form-control border-dark" %></td>
           </tr>
           <tr>
             <td class="col-3">住所</td>
-            <td colspan="2" class="col-6"><%= f.text_field :address, class: "form-control border-dark" %></td>
+            <td colspan="2" class="col-6"><%= f.text_field :address, placeholder: '東京都渋谷区代々木神園町0-0', class: "form-control border-dark" %></td>
           </tr>
           <tr>
             <td class="col-3">宛名</td>
-            <td class="col-3"><%= f.text_field :name, class: "form-control border-dark" %></td>
-            <td class="col-4"></td>
-            <td class="col-2"><%= f.submit '　新規登録　', class:"btn btn-success" %></td>
+            <td class="col-3"><%= f.text_field :name, placeholder: '令和道子', class: "form-control border-dark" %></td>
+            <td class="col-3"></td>
+            <td class="col-3"><%= f.submit '新規登録', class:"btn btn-success font-weight-bold px-5" %></td>
           </tr>
         </tbody>
       </table>
@@ -25,25 +27,25 @@
     </div>
   </div>
   <div class="row pt-3">
-    <div class="col-8 mt-3">
+    <div class="col-9 mt-3">
       <table class="table table-bordered border-dark">
         <thead class="bg-light">
           <tr></tr>
-            <th>郵便番号</th>
-            <th>住所</th>
-            <th>宛名</th>
-            <th></th>
+            <td>郵便番号</td>
+            <td class="col-5">住所</td>
+            <td>宛名</td>
+            <td></td>
           </tr>
         </thead>
         <tbody>
           <% @addresses.each do |address| %>
           <tr>
-            <td><%= address.postal_code %></td>
-            <td><%= address.address %></td>
-            <td><%= address.name %></td>
-            <td>
-              <%= link_to("編集する", edit_address_path(address.id), class: "btn btn-success") %>
-              <%= link_to("削除する", address_path(address.id), method: :delete, class: "btn btn-danger mx-2") %>
+            <td class="align-middle"><%= address.postal_code %></td>
+            <td class="align-middle"><%= address.address %></td>
+            <td class="align-middle"><%= address.name %></td>
+            <td class="align-middle text-center">
+              <%= link_to("編集する", edit_address_path(address.id), class: "btn btn-success font-weight-bold") %>
+              <%= link_to("削除する", address_path(address.id), method: :delete, class: "btn btn-danger font-weight-bold mx-2") %>
             </td>
           </tr>
           <% end %>

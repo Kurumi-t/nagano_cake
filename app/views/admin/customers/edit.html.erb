@@ -1,9 +1,9 @@
 <div class="container">
+  <div class="offset-md-1 mt-5">
+    <span class="bg-light px-4 h5"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</span>
+  </div>
   <div class="row pt-3">
-    <div class="col-md-8 offset-md-1">
-      <h5><span class="bg-light">　<%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</span></h5>
-    </div>
-    <div class="col-md-8 offset-md-1 mt-3">
+    <div class="col-9 offset-md-1 mt-3">
       <%= form_with model:@customer, url:admin_customer_path, method: :PATCH, local: true do |f| %>
         <table class="table table-borderless table-sm">
           <tbody>
@@ -13,21 +13,23 @@
             </tr>
             <tr>
               <td>氏名</td>
-              <td><%= f.text_field :last_name, class: "form-control border-dark" %></td>
-              <td><%= f.text_field :first_name, class: "form-control border-dark" %></td>
+              <td class="col-3"><%= f.text_field :last_name, class: "form-control border-dark" %></td>
+              <td class="col-3"><%= f.text_field :first_name, class: "form-control border-dark ml-4" %></td>
+              <td></td>
             <tr>
             <tr>
               <td>フリガナ</td>
               <td><%= f.text_field :last_name_kana, class: "form-control border-dark" %></td>
-              <td><%= f.text_field :first_name_kana, class: "form-control border-dark" %></td>
+              <td><%= f.text_field :first_name_kana, class: "form-control border-dark ml-4" %></td>
+              <td></td>
             </tr>
             <tr>
               <td>郵便番号</td>
               <td><%= f.text_field :postal_code, class: "form-control border-dark" %></td>
             </tr>
             <tr>
-              <td>住所</td>
-              <td colspan="3"><%= f.text_field :address, class: "form-control border-dark" %></td>
+              <td class="col-3">住所</td>
+              <td colspan="3" class="col-9"><%= f.text_field :address, class: "form-control border-dark" %></td>
             </tr>
             <tr>
               <td>電話番号</td>
@@ -35,24 +37,20 @@
             </tr>
             <tr>
               <td>メールアドレス</td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-dark" %></td>
+              <td colspan="2" class="col-6"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-dark" %></td>
             </tr>
             <tr>
               <td>会員ステータス</td>
               <td>
-                <div class="form-check text-black-50">
-                  <label>
-                    <input class="form-check-input" type="radio" name="is_deleted" value="false" checked style="accent-color:black;">有効
-                  </label>
-                   <label>
-                    <input class="form-check-input" type="radio" name="is_deleted" value="true" style="accent-color:black;">退会
-                  </label>
-                </div>
+                <%= f.radio_button :is_deleted, false %>
+                <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;", class: "mr-4"} %>
+                <%= f.radio_button :is_deleted, true %>
+                <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
               </td>
             </tr>
             <tr>
               <td></td>
-              <td><%= f.submit '　変更を保存　', class:"btn btn-success btn-lg" %></td>
+              <td><%= f.submit '変更を保存', class:"btn btn-success btn-lg px-4" %></td>
             </tr>
           </tbody>
         </table>

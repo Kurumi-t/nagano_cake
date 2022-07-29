@@ -25,7 +25,7 @@
           <tr>
             <th class="col-2 h5"><b>注文ステータス</b></th>
             <td class="col-2">
-              <%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k]}, class:"form-control" %>
+              <%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k]}, class: "form-control" %>
             </td>
             <td class="col-8"><%= f.submit '更新', class:"btn btn-sm btn-success" %></td>
           </tr>

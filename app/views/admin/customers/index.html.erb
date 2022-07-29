@@ -1,15 +1,14 @@
 <div class="container">
-  <div class="row pt-3">
-    <div class="col-md-8 offset-md-1">
-      <h5><span class="bg-light">　会員一覧　</span></h5>
-    </div>
+  <div class="offset-md-1 mt-5">
+    <span class="bg-light px-4 h5">会員一覧</span>
+  </div>
+  <div class="row pt-2">
     <div class="col-md-8 offset-md-1 mx-auto mt-2">
-      <table class="table table-sm border-bottom">
+      <table class="table border-bottom">
         <thead class="bg-light">
           <tr>
-            <th></th>
-            <th>会員ID</th>
-            <th><u>氏名</u></th>
+            <th class="pl-3">会員ID</th>
+            <th class="col-3"><u>氏名</u></th>
             <th>メールアドレス</th>
             <th>ステータス</th>
           </tr>
@@ -17,21 +16,20 @@
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
-            <td></td>
-            <td><%= customer.id %></td>
-            <td>
+            <td class="pl-3 align-middle"><%= customer.id %></td>
+            <td class="align-middle">
               <u>
                 <%= link_to(admin_customer_path(customer.id), class: "text-dark") do %>
                   <%= customer.last_name %><%= customer.first_name %>
                 <% end %>
               </u>
             </td>
-            <td><%= customer.email %></td>
-            <td>
+            <td class="align-middle"><%= customer.email %></td>
+            <td class="align-middle">
               <% if customer.is_deleted == false %>
-                <p class="text-success"><b>有効</b></p>
+                <b class="text-success">有効</b>
               <% else %>
-                <p class="text-black-50"><b>退会</b></p>
+                <b class="text-black-50">退会</b>
               <% end %>
             </td>
           </tr>

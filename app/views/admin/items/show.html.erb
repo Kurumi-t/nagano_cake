@@ -3,10 +3,10 @@
     <span class="bg-light px-4 h5">商品詳細</span>
   </div>
   <div class="row pt-5">
-    <div class="col-sm-12 col-md-4 col-lg-4 text-right">
-      <%= image_tag @item.get_image(180,100) %>
+    <div class="col-4 text-right">
+      <%= image_tag @item.get_image(400,200) %>
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-8 px-5">
+    <div class="col-7">
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -37,7 +37,7 @@
         </tbody>
       </table>
     </div>
-    <div class="mx-auto">
+    <div class="col-12 text-center">
       <%= link_to("編集する", edit_admin_item_path(@item.id), class: "btn btn-success btn-lg px-5") %>
     </div>
   </div>

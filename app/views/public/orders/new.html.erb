@@ -22,13 +22,17 @@
             〒<%= @customer.postal_code %> <%= @customer.address %></br>
             <%= @customer.last_name %><%= @customer.first_name %>
           </p>
-          <%= f.radio_button :select_address, 2 %>
-          <%= f.label :address_number_2, "登録済み住所から選択" %>
-          <div class="form-select mx-4">
-            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+          <div>
+            <%= f.radio_button :select_address, 2 %>
+            <%= f.label :address_number_2, "登録済み住所から選択" %>
+            <div class="form-select mx-4">
+              <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display),{class:"form_select"} %>
+            </div>
           </div>
-          <%= f.radio_button :select_address, 3 %>
-          <%= f.label :address_number_3, "新しいお届け先" %>
+          <div class="mt-3">
+            <%= f.radio_button :select_address, 3 %>
+            <%= f.label :address_number_3, "新しいお届け先" %>
+          </div>
           <table class="col-11 table-borderless mx-4">
             <tbody>
               <tr>
@@ -48,7 +52,7 @@
             </tbody>
           </table>
         </div>
-        <div class="form group text-center mt-3">
+        <div class="form group text-center mt-3 mb-3">
           <%= f.submit '確認画面へ進む', class:"btn btn-lg btn-info px-4" %>
         </div>
 	    <% end %>

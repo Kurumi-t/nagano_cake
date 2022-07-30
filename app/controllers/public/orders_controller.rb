@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
+    @addresses = @customer.addresses
   end
 
   def confirm
@@ -38,7 +39,7 @@ class Public::OrdersController < ApplicationController
     cart_items = current_customer.cart_items.all
     if @order.save
       cart_items.each do |cart_item|
-        order_detail = OrderDetail.new
+        order_detail = OrderDetail.new(order_detail_params)
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
         order_detail.amount = cart_item.amount
@@ -71,5 +72,9 @@ class Public::OrdersController < ApplicationController
 
   def address_params
     params.require(:order).permit(:name, :address, :postal_code)
+  end
+
+  def order_detail_params
+    params.require(:order_detail).permit(:order_id, :item_id, :price, :amount, :making_status)
   end
 end

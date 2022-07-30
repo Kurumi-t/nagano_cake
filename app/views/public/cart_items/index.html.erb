@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row mt-3 mx-5">
+  <div class="row mt-5 mx-5">
     <div class="col-6">
-      <h5><span class="bg-light mt-3 mx-4">ショッピングカート</span></h5>
+      <span class="bg-light mx-4 h5">ショッピングカート</span>
     </div>
     <div class="col-6 text-right">
       <%= link_to("カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger px-3") %>
@@ -11,10 +11,10 @@
         <thead class="bg-light">
           <tr>
             <td class="col-5">商品名</td>
-            <td class="col-">単価（税込）</td>
-            <td class="col-">数量</td>
-            <td class="col-">小計</td>
-            <td class="col-"></td>
+            <td>単価（税込）</td>
+            <td>数量</td>
+            <td>小計</td>
+            <td></td>
           </tr>
         </thead>
       <% @cart_items.each do |cart_item| %>
@@ -24,7 +24,7 @@
             <th class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></th>
             <th class="align-middle">
               <%=form_with model: cart_item do |f| %>
-                <%= f.select :amount, [*(1..10)], { class: "form_control" } %>
+                <%= f.select :amount, [*(1..10)],{}, { class: "form_control" } %>
                 <%= f.submit '変更', class: "btn btn-success" %>
               <% end %>
             </th>
@@ -35,8 +35,8 @@
         </tbody>
       <% end %>
       </table>
-      <div class="col-12 mt-3">
-        <%= link_to("買い物を続ける", root_path, class: "btn btn-info mx-3") %>
+      <div class="col-12 mt-4">
+        <%= link_to("買い物を続ける", root_path, class: "btn btn-info mx-3 mt-3") %>
         <table class="col-3 table table-bordered float-right">
           <tbody>
             <tr>

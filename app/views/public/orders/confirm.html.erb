@@ -1,5 +1,7 @@
 <div class="container">
-  <h5><span class="bg-light px-4 mt-3">注文情報確認</span></h5>
+  <div class="offset-md-1 mt-5">
+    <span class="bg-light px-4 h5">注文情報確認</span>
+  </div>
   <div class="row mt-2">
     <div class="col-8 mr-3">
       <table class="table table-bordered border-dark">
@@ -44,10 +46,13 @@
       </table>
     </div>
     <div class="col-12">
-      <p class="h5"><b class="mr-3">支払方法</b><%= @order.payment_method_i18n %></p>
-      <p class="h5 mt-5"><b class="mr-3">お届け先</b><%= @order.address_display %><br><%= @order.name %></p>
+      <h5 class="mt-4"><b class="mr-4 mt-5">支払方法</b><%= @order.payment_method_i18n %></h5>
+      <div class="form-inline mt-5">
+        <h5><b class="mr-4">お届け先</b></br></h5>
+        <h5><%= @order.address_display %><br><%= @order.name %></h5>
+      </div>
     </div>
-    <div class="col-12 text-center mt-4">
+    <div class="col-12 text-center mt-5">
       <%= form_with model: @order, url: orders_path, method: :POST, local: true do |f| %>
         <%= f.hidden_field :customer_id %>
         <%= f.hidden_field :postal_code %>

@@ -8,7 +8,7 @@
         <tr>
           <td>注文日</td>
           <td class="col-5">配送先</td>
-          <td>注文商品</td>
+          <td class="col-2">注文商品</td>
           <td class="col-1">支払金額</td>
           <td>ステータス</td>
           <td>注文詳細</td>
@@ -25,7 +25,7 @@
             </td>
             <td>
               <% order.order_details.each do |order_detail| %>
-                <p class="lh-sm"><%= order_detail.item.name %></p>
+                <%= order_detail.item.name %><br>
               <% end %>
             </td>
             <td class="align-middle"><%= order.total_payment.to_s(:delimited) %>円</td>

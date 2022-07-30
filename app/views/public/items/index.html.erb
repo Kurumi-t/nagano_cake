@@ -17,7 +17,7 @@
     <div class="col-9">
       <div class="form-inline">
         <h3><b>商品一覧</b></h3>
-        <h5>（全<%= @items.count %>件）</h5>
+        <h5>（全<%= @item_count %>件）</h5>
       </div>
       <div class="row pt-3">
         <% @items.each do |item| %>
@@ -31,6 +31,8 @@
             <p>￥<%= item.price.to_s(:delimited) %></p>
           </div>
         <% end %>
+      </div>
+      <div class="row justify-content-center">
         <%= paginate @items %>
       </div>
     </div>

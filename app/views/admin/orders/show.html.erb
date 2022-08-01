@@ -27,7 +27,7 @@
           <th class="col-2 h5"><b>支払方法</b></th>
           <td colspan="2", class="col-10"><%= @order.payment_method_i18n %></td>
         </tr>
-        <%= form_with model: @order,url: admin_order_path(@order.id), method: :PATCH, local: true do |f| %>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :PATCH, local: true do |f| %>
           <tr>
             <th class="col-2 h5"><b>注文ステータス</b></th>
             <td class="col-2">
@@ -57,7 +57,7 @@
             <td class="align-middle text-center"><%= order_detail.price.to_s(:delimited) %></td>
             <td class="align-middle text-center"><%= order_detail.amount %></td>
             <td class="align-middle text-center"><%= order_detail.subtotal.to_s(:delimited) %></td>
-            <%= form_with model: @order_detail, url: admin_order_detail_path(order_detail.id), method: :PATCH, local: true do |f| %>
+            <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :PATCH, local: true do |f| %>
               <td class="align-middle">
                 <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"), k]},{},{class:"form-control form-control-sm text-center"} %></td>
               <td class="align-middle"><%= f.submit '更新', class:"btn btn-sm btn-success" %></td>

@@ -20,7 +20,7 @@
               <td>
                 <u>
                   <%= link_to(admin_order_path(order.id), class: "text-dark") do %>
-                    <%= order.created_at.strftime('%Y/%m/%d %T') %>
+                    <%= order.created_at.to_s(:datetime_jp) %>
                   <% end %>
                 </u>
               </td>

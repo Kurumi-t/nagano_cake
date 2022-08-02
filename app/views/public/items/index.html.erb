@@ -22,12 +22,10 @@
       <div class="row pt-3">
         <% @items.each do |item| %>
           <div class="col-3">
-            <%= image_tag item.get_image(180,100) %>
-            <p>
-              <%= link_to(item_path(item.id), class: "text-dark") do %>
-                <%= item.name %>
-              <% end %>
-            </p>
+            <%= link_to(item_path(item.id), class: "text-dark") do %>
+              <%= image_tag item.get_image(180,100) %>
+              <p><%= item.name %></p>
+            <% end %>
             <p>￥<%= item.price.to_s(:delimited) %></p>
           </div>
         <% end %>

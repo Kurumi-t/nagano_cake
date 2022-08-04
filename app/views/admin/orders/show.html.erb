@@ -50,7 +50,7 @@
         </tr>
       </thead>
       <tbody class="table-borderless">
-        <% @order.order_details.each do |order_detail| %>
+        <% @order_details.each do |order_detail| %>
           <% @total_price += order_detail.subtotal %>
           <tr>
             <td class="align-middle"><%= order_detail.item.name %></td>

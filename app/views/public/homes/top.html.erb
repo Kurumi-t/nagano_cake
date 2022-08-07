@@ -35,13 +35,11 @@
       <div class="row mt-3">
         <% @items.each do |item| %>
           <div class="col-3">
-            <%= image_tag item.get_image(200,100) %>
-            <p class="mt-2 ml-1"><b>
-              <%= link_to(item_path(item.id), class: "text-dark") do %>
-                <%= item.name %>
-              <% end %>
-            </b></p>
-            <p><b>￥<%= item.price.to_s(:delimited) %></b></p>
+            <%= link_to(item_path(item.id), class: "text-dark") do %>
+              <%= image_tag item.get_image(200,100) %>
+              <p class="mt-2 ml-1"><b><%= item.name %></b></p>
+              <p><b>￥<%= item.price.to_s(:delimited) %></b></p>
+            <% end %>
           </div>
         <% end %>
       </div>

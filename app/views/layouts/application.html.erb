@@ -9,89 +9,83 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <div class="container">
-        <nav class="navbar navbar-expand-lg">
-          <a class="navbar-brand" href="/">
-            <span>LOGO</span>
+        <nav class="navbar navbar-expand-lg sticky-top">
+          <a class="navbar-brand mt-5" href="/">
+            <span class="border border-dark  text-dark h1 px-5">LOGO</span>
           </a>
-          <div class="mx-auto pt-5">
-            <% if customer_signed_in? %>
-              <p>ようこそ、<%= current_customer.last_name %>さん！</p>
-            <% end %>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="navbar-collapse collapse show" id="navbarNavDropdown">
+          <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-              <li>
-                <%= link_to customers_my_page_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to customers_my_page_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   マイページ
                 <% end %>
               </li>
-              <li>
-                <%= link_to items_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to items_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   商品一覧
                 <% end %>
               </li>
-              <li>
-                <%= link_to cart_items_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to cart_items_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   カート
                 <% end %>
               </li>
-              <li>
-                <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   ログアウト
                 <% end %>
               </li>
             <% elsif admin_signed_in? %>
-              <li>
-                <%= link_to admin_items_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to admin_items_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   商品一覧
                 <% end %>
               </li>
-              <li>
-                <%= link_to admin_customers_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to admin_customers_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   会員一覧
                 <% end %>
               </li>
-              <li>
-                <%= link_to admin_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to admin_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   注文履歴一覧
                 <% end %>
               </li>
-              <li>
-                <%= link_to admin_genres_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to admin_genres_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   ジャンル一覧
                 <% end %>
               </li>
-              <li>
-                <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   ログアウト
                 <% end %>
               </li>
             <% else %>
-              <li>
-                <%= link_to about_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to about_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   About
                 <% end %>
-              </li>
+              </li class="nav-item">
               <li>
-                <%= link_to items_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+                <%= link_to items_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   商品一覧
                 <% end %>
               </li>
-              <li>
-                <%= link_to new_customer_registration_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to new_customer_registration_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   新規登録
                 <% end %>
               </li>
-              <li>
-                <%= link_to new_customer_session_path, class: "nav-link btn btn-outline-light text-dark mt-3 mb-2 mx-4" do %>
+              <li class="nav-item">
+                <%= link_to new_customer_session_path, class: "nav-link btn btn-outline-light text-dark mx-4" do %>
                   ログイン
                 <% end %>
               </li>
@@ -99,12 +93,20 @@
             </ul>
           </div>
         </nav>
+        <div class="text-center">
+            <% if customer_signed_in? %>
+              <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+            <% end %>
+          </div>
         <form class="col-3 d-flex ml-auto" role="search">
           <input class="form-control me-2 justifi" type="search" placeholder="Search" aria-label="Search">
         </form>
       </div>
     </header>
     <main>
+      <div class="text-center">
+        <%= notice %>
+      </div>
       <%= yield %>
     </main>
     <footer>

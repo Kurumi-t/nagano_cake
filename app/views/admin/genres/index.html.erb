@@ -1,6 +1,8 @@
 <div class="container">
-  <span class="bg-light mx-5 h5">ジャンル一覧・追加</span>
-   <div class="row mt-5">
+  <div class="offset-md-1 mt-5">
+    <span class="bg-light px-4 h5">ジャンル一覧・追加</span>
+  </div>
+  <div class="row mt-5">
     <div class="col-12">
       <%= form_with model:@genre, url:admin_genres_path, method: :POST, local: true do |f| %>
         <%= f.label :ジャンル名 %>

@@ -52,7 +52,7 @@
         <h5><%= @order.address_display %><br><%= @order.name %></h5>
       </div>
     </div>
-    <div class="col-12 text-center mt-5">
+    <div class="col-12 text-center mt-5 mb-5">
       <%= form_with model: @order, url: orders_path, method: :POST, local: true do |f| %>
         <%= f.hidden_field :customer_id %>
         <%= f.hidden_field :postal_code %>
